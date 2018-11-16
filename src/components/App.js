@@ -3,7 +3,7 @@ import Footer from './Footer'
 import Paper from '@material-ui/core/Paper';
 import AddTodo from '../containers/AddTodo'
 import VisibleTodoList from '../containers/VisibleTodoList'
-import SimpleAppBar from '../containers/AppBar';
+import SimpleAppBar from './AppBar';
 
 const App = () => (
   <div>

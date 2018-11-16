@@ -15,8 +15,13 @@ const AddTodo = ({ dispatch }) => {
         if (!name.value.trim()) {
           return
         }
-        dispatch(addTodo(name.value))
+
+        var result = { name: name.value, description: description.value, time: time.value, priority: priority.value }
+        dispatch(addTodo(name.value, result))
         name.value = ''
+        description.value = ''
+        time.value = ''
+        priority.value = ''
       }}>
         <input ref={node => name = node} />
         <input ref={node => description = node} />

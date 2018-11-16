@@ -3,19 +3,25 @@ import { connect } from 'react-redux'
 import { addTodo } from '../actions'
 
 const AddTodo = ({ dispatch }) => {
-  let input
+  let name
+  let description
+  let time
+  let priority
 
   return (
     <div>
       <form onSubmit={e => {
         e.preventDefault()
-        if (!input.value.trim()) {
+        if (!name.value.trim()) {
           return
         }
-        dispatch(addTodo(input.value))
-        input.value = ''
+        dispatch(addTodo(name.value))
+        name.value = ''
       }}>
-        <input ref={node => input = node} />
+        <input ref={node => name = node} />
+        <input ref={node => description = node} />
+        <input ref={node => time = node} />
+        <input ref={node => priority = node} />
         <button type="submit">
           Add Todo
         </button>

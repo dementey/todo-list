@@ -1,13 +1,18 @@
 import React from 'react'
 import Footer from './Footer'
+import Paper from '@material-ui/core/Paper';
 import AddTodo from '../containers/AddTodo'
 import VisibleTodoList from '../containers/VisibleTodoList'
+import SimpleAppBar from '../containers/AppBar';
 
 const App = () => (
   <div>
-    <AddTodo />
-    <VisibleTodoList />
-    <Footer />
+    <SimpleAppBar />
+    <Paper>
+      <AddTodo />
+      <VisibleTodoList />
+      <Footer />
+    </Paper>
   </div>
 )
 

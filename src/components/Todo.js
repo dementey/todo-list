@@ -1,15 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import GridListTile from '@material-ui/core/GridListTile';
 
-const Todo = ({ onClick, completed, text, id, result }) => (
-  <li
-    onClick={onClick}
-    style={{
-      textDecoration: completed ? 'line-through' : 'none'
-    }}
-  >
-    {id + 1} {result.name} {result.description} {result.time} {result.priority}
-  </li>
+const Todo = ({ onClick, completed, result, id }) => (
+  <Paper className="" >
+    <GridListTile
+      onClick={onClick}
+      style={{
+        textDecoration: completed ? 'line-through' : 'none'
+      }}
+    >
+      <Card className="" >
+        <CardContent>
+          <Typography className="" color="textSecondary" gutterBottom>
+            №{id+1} {result.name}
+          </Typography>
+          <Typography variant="h5" component="h2">
+            {result.description}
+          </Typography>
+          <Typography className="" color="textSecondary">
+            {result.time}
+          </Typography>
+
+        </CardContent>
+      </Card>
+    </GridListTile>
+  </Paper>
 )
 
 Todo.propTypes = {

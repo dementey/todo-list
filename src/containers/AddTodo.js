@@ -1,37 +1,123 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from '../actions'
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
+import TextField from '@material-ui/core/TextField';
+import Toolbar from '@material-ui/core/Toolbar';
+import Grid from '@material-ui/core/Grid';
+import Assignment from '@material-ui/icons/Assignment';
+import Description from '@material-ui/icons/Description';
+import AccessTime from '@material-ui/icons/AccessTime';
+import AssignmentLate from '@material-ui/icons/AssignmentLate';
+//import InputAdornment from '@material-ui/core/InputAdornment';
+import MenuItem from '@material-ui/core/MenuItem';
+
+const ranges = [
+  {
+    value: '101',
+    label: '1-DoNow',
+  },
+  {
+    value: '102',
+    label: '2-DoNext',
+  },
+  {
+    value: '103',
+    label: '3-DoSoon',
+  },
+  {
+    value: '104',
+    label: '4-Waiting',
+  },
+  {
+    value: '105',
+    label: '5-DoSomeDay',
+  },
+  {
+    value: '106',
+    label: '6-OnHoldy',
+  },
+
+];
 
 const AddTodo = ({ dispatch }) => {
   let name
   let description
   let time
   let priority
+  let picker = 101
+
+
 
   return (
-    <div>
-      <form onSubmit={e => {
-        e.preventDefault()
-        if (!name.value.trim()) {
-          return
-        }
 
-        var result = { name: name.value, description: description.value, time: time.value, priority: priority.value }
-        dispatch(addTodo(name.value, result))
-        name.value = ''
-        description.value = ''
-        time.value = ''
-        priority.value = ''
-      }}>
-        <input ref={node => name = node} />
-        <input ref={node => description = node} />
-        <input ref={node => time = node} />
-        <input ref={node => priority = node} />
-        <button type="submit">
-          Add Todo
-        </button>
-      </form>
-    </div>
+    <div>
+      <Toolbar>
+        <form onSubmit={e => {
+          e.preventDefault()
+          if (!name.value.trim() || !description.value.trim() || !time.value || !priority.value) {
+            return
+          }
+
+          var result = { name: name.value, description: description.value, time: time.value, priority: priority.value }
+          dispatch(addTodo(name.value, result))
+          name.defaultValue = 'Домашние питомцы'
+          description.defaultValue = 'Выгулять собаку'
+          time.defaultValue = '07:30'
+          priority.defaultValue = '1'
+        }}>
+
+          <div className="">
+            <Grid container spacing={8} alignItems="flex-end">
+              <Grid item>
+                <Assignment />
+              </Grid>
+              <Grid item>
+                <TextField id="input-with-icon-grid" label="Название" defaultValue='Домашние питомцы' inputRef={node => name = node} />
+              </Grid>
+
+              <Grid item>
+                <Description />
+              </Grid>
+              <Grid item>
+                <TextField id="input-with-icon-grid" label="Oписание" defaultValue='Выгулять собаку' inputRef={node => description = node} />
+              </Grid>
+
+              <Grid item>
+                <AccessTime />
+              </Grid>
+              <Grid item>
+                <TextField id="input-with-icon-grid" label="Время" type="time" defaultValue="07:30" inputRef={node => time = node} />
+              </Grid>
+
+              <Grid item>
+                <AssignmentLate />
+              </Grid>
+              <Grid item>
+                <TextField select id="input-with-icon-grid" label="Приоритет"
+                  value={picker}
+                  inputRef={node => priority = node}
+                // onChange={event => (picker = event.target.value)}
+                //InputProps={{picker: picker}}
+                >
+                  {ranges.map(option => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))} {picker}</TextField>
+              </Grid>
+
+              <Grid item>
+                <Button type='submit' variant="fab" mini color="primary" aria-label="Add" className='' >
+                  <AddIcon />
+                </Button>
+              </Grid>
+            </Grid>
+          </div>
+        </form>
+      </Toolbar>
+    </div >
   )
 }
 

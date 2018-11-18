@@ -18,7 +18,7 @@ const AddTodo = ({ dispatch }) => {
   let time
   let picker = 101
 
-  function freeAnswerTextChanged(freeanswertext) {
+  function priorityFunction(freeanswertext) {
     picker = freeanswertext;
     console.log(picker);
   };
@@ -66,7 +66,7 @@ const AddTodo = ({ dispatch }) => {
                 <AssignmentLate />
               </Grid>
               <Grid item>
-                <SimpleSelect val={picker} cb={freeAnswerTextChanged}></SimpleSelect>
+                <SimpleSelect val={picker} cb={priorityFunction}></SimpleSelect>
               </Grid>
 
               <Grid item>

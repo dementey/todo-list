@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -7,32 +6,15 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-const styles = theme => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  formControl: {
-    margin: theme.spacing.unit,
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing.unit * 2,
-  },
-});
+
 
 class SimpleSelect extends React.Component {
   state = {
-    age: this.props.val,
-    name: 'hai',
-    labelWidth: 0,
+    priority: this.props.val,
+    name: '',
+
   };
 
-  componentDidMount() {
-    this.setState({
-      labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
-    });
-  }
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -49,15 +31,15 @@ class SimpleSelect extends React.Component {
           ref={ref => {
             this.InputLabelRef = ref;
           }}
-          htmlFor="age-simple"
+          htmlFor="priority-simple"
         >
           Приоритет
           </InputLabel>
         <Select
-          value={this.state.age}
+          value={this.state.priority}
           onChange={this.handleChange}
           inputProps={{
-            name: 'age',
+            name: 'priority',
             id: 'input-with-icon-grid',
           }}
         >
@@ -83,4 +65,4 @@ SimpleSelect.propTypes = {
 
 };
 
-export default withStyles(styles)(SimpleSelect);
+export default withStyles()(SimpleSelect);

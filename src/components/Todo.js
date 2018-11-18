@@ -25,7 +25,9 @@ const Todo = ({ onClick, completed, result, id }) => (
           <Typography className="" color="textSecondary">
             {result.time}
           </Typography>
-
+          <Typography className="" color="textSecondary">
+            {result.priority}
+          </Typography>
         </CardContent>
       </Card>
     </GridListTile>

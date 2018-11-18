@@ -10,44 +10,21 @@ import Assignment from '@material-ui/icons/Assignment';
 import Description from '@material-ui/icons/Description';
 import AccessTime from '@material-ui/icons/AccessTime';
 import AssignmentLate from '@material-ui/icons/AssignmentLate';
-//import InputAdornment from '@material-ui/core/InputAdornment';
-import MenuItem from '@material-ui/core/MenuItem';
-
-const ranges = [
-  {
-    value: '101',
-    label: '1-DoNow',
-  },
-  {
-    value: '102',
-    label: '2-DoNext',
-  },
-  {
-    value: '103',
-    label: '3-DoSoon',
-  },
-  {
-    value: '104',
-    label: '4-Waiting',
-  },
-  {
-    value: '105',
-    label: '5-DoSomeDay',
-  },
-  {
-    value: '106',
-    label: '6-OnHoldy',
-  },
-
-];
+import SimpleSelect from '../components/Picker';
 
 const AddTodo = ({ dispatch }) => {
+
+
   let name
   let description
   let time
   let priority
   let picker = 101
 
+  function freeAnswerTextChanged(freeanswertext) {
+    picker = freeanswertext;
+    console.log(picker);
+  };
 
 
   return (
@@ -56,16 +33,15 @@ const AddTodo = ({ dispatch }) => {
       <Toolbar>
         <form onSubmit={e => {
           e.preventDefault()
-          if (!name.value.trim() || !description.value.trim() || !time.value || !priority.value) {
+          if (!name.value.trim() || !description.value.trim() || !time.value || !picker) {
             return
           }
 
-          var result = { name: name.value, description: description.value, time: time.value, priority: priority.value }
+          var result = { name: name.value, description: description.value, time: time.value, priority: picker }
           dispatch(addTodo(name.value, result))
           name.defaultValue = 'Домашние питомцы'
-          description.defaultValue = 'Выгулять собаку'
+          description.defaultValue = 'Выгулять '
           time.defaultValue = '07:30'
-          priority.defaultValue = '1'
         }}>
 
           <div className="">
@@ -95,17 +71,7 @@ const AddTodo = ({ dispatch }) => {
                 <AssignmentLate />
               </Grid>
               <Grid item>
-                <TextField select id="input-with-icon-grid" label="Приоритет"
-                  value={picker}
-                  inputRef={node => priority = node}
-                // onChange={event => (picker = event.target.value)}
-                //InputProps={{picker: picker}}
-                >
-                  {ranges.map(option => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>
-                  ))} {picker}</TextField>
+                <SimpleSelect val={picker} cb={freeAnswerTextChanged}></SimpleSelect>
               </Grid>
 
               <Grid item>
@@ -117,8 +83,13 @@ const AddTodo = ({ dispatch }) => {
           </div>
         </form>
       </Toolbar>
+
     </div >
   )
 }
 
 export default connect()(AddTodo)
+
+
+
+

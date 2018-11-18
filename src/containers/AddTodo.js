@@ -13,12 +13,9 @@ import AssignmentLate from '@material-ui/icons/AssignmentLate';
 import SimpleSelect from '../components/Picker';
 
 const AddTodo = ({ dispatch }) => {
-
-
   let name
   let description
   let time
-  let priority
   let picker = 101
 
   function freeAnswerTextChanged(freeanswertext) {
@@ -26,9 +23,7 @@ const AddTodo = ({ dispatch }) => {
     console.log(picker);
   };
 
-
   return (
-
     <div>
       <Toolbar>
         <form onSubmit={e => {
@@ -75,7 +70,7 @@ const AddTodo = ({ dispatch }) => {
               </Grid>
 
               <Grid item>
-                <Button type='submit' variant="fab" mini color="primary" aria-label="Add" className='' >
+                <Button type='submit' variant="fab" mini color="primary" aria-label="Add"  >
                   <AddIcon />
                 </Button>
               </Grid>

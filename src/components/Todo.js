@@ -17,7 +17,7 @@ const Todo = ({ onClick, completed, result, id }) => (
       <Card className="" >
         <CardContent>
           <Typography className="" color="textSecondary" gutterBottom>
-            №{id+1} {result.name}
+            №{id + 1} {result.name}
           </Typography>
           <Typography variant="h5" component="h2">
             {result.description}
@@ -26,7 +26,11 @@ const Todo = ({ onClick, completed, result, id }) => (
             {result.time}
           </Typography>
           <Typography className="" color="textSecondary">
-            {result.priority}
+
+            {result.priority.allPickerArray.map(option => (
+              result.priority.picker == option.value ? option.label : false))}
+
+
           </Typography>
         </CardContent>
       </Card>

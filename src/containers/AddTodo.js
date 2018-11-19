@@ -12,15 +12,46 @@ import AccessTime from '@material-ui/icons/AccessTime';
 import AssignmentLate from '@material-ui/icons/AssignmentLate';
 import SimpleSelect from '../components/Picker';
 
+
+const pickerArray = [
+  {
+    value: '101',
+    label: '1-DoNow',
+  },
+  {
+    value: '102',
+    label: '2-DoNext',
+  },
+  {
+    value: '103',
+    label: '3-DoSoon',
+  },
+  {
+    value: '104',
+    label: '4-Waiting',
+  },
+  {
+    value: '105',
+    label: '5-DoSomeDay',
+  },
+  {
+    value: '106',
+    label: '6-OnHoldy',
+  },
+];
+
+
 const AddTodo = ({ dispatch }) => {
   let name
   let description
   let time
   let picker = 101
+  let allPickerArray
 
-  function priorityFunction(freeanswertext) {
-    picker = freeanswertext;
-    console.log(picker);
+  function priorityFunction(currentSelected, allSelectArra) {
+    picker = currentSelected;
+    allPickerArray = allSelectArra;
+    console.log(allPickerArray);
   };
 
   return (
@@ -32,7 +63,7 @@ const AddTodo = ({ dispatch }) => {
             return
           }
 
-          var result = { name: name.value, description: description.value, time: time.value, priority: picker }
+          var result = { name: name.value, description: description.value, time: time.value, priority: {picker:picker, allPickerArray: pickerArray }}
           dispatch(addTodo(name.value, result))
           name.defaultValue = 'Домашние питомцы'
           description.defaultValue = 'Выгулять '
@@ -66,7 +97,7 @@ const AddTodo = ({ dispatch }) => {
                 <AssignmentLate />
               </Grid>
               <Grid item>
-                <SimpleSelect val={picker} cb={priorityFunction}></SimpleSelect>
+                <SimpleSelect val={picker} cb={priorityFunction} ></SimpleSelect>
               </Grid>
 
               <Grid item>

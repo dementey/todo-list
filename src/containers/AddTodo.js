@@ -46,12 +46,10 @@ const AddTodo = ({ dispatch }) => {
   let description
   let time
   let picker="101"
-  let allPickerArray
+
 
   function priorityFunction(currentSelected, allSelectArra) {
     picker = currentSelected;
-    allPickerArray = allSelectArra;
-    console.log(allPickerArray);
   };
 
   return (
@@ -109,7 +107,6 @@ const AddTodo = ({ dispatch }) => {
           </div>
         </form>
       </Toolbar>
-
     </div >
   )
 }

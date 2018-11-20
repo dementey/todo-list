@@ -17,8 +17,11 @@ const Footer = () => (
     <FilterLink filter={VisibilityFilters.SHOW_COMPLETED} color="primary">
       Completed
     </FilterLink>
+    <FilterLink filter={VisibilityFilters.SHOW_TIME} color="primary">
+      TIME 7:30
+    </FilterLink>
     <FilterLink filter={VisibilityFilters.SHOW_PRIORITY} color="primary">
-      Priotity
+      Priotity 1-DoNow
     </FilterLink>
   </Toolbar>
 )

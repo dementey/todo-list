@@ -14,8 +14,10 @@ const getVisibleTodos = (todos, filter) => {
       return todos.filter(t => t.completed)
     case VisibilityFilters.SHOW_ACTIVE:
       return todos.filter(t => !t.completed)
+      case VisibilityFilters.SHOW_TIME:
+      return todos.filter(t => t.result.time==="07:30")
       case VisibilityFilters.SHOW_PRIORITY:
-      return todos.filter(t => t.result.priority.picker=="101")
+      return todos.filter(t => t.result.priority.picker==="101")
       
 
     default:

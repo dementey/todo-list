@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Todo from './Todo'
 import GridList from '@material-ui/core/GridList';
-const TodoList = ({ todos, toggleTodo }) => (
 
+const TodoList = ({ todos, toggleTodo }) => (
+  <Fragment>
     <GridList cols={todos.length}>
       {todos.map(todo =>
         <Todo
@@ -13,7 +14,7 @@ const TodoList = ({ todos, toggleTodo }) => (
         />
       )}
     </GridList>
-
+  </Fragment>
 )
 
 TodoList.propTypes = {

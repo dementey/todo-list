@@ -45,7 +45,7 @@ const AddTodo = ({ dispatch }) => {
   let name
   let description
   let time
-  let picker = 101
+  let picker="101"
   let allPickerArray
 
   function priorityFunction(currentSelected, allSelectArra) {
@@ -63,7 +63,7 @@ const AddTodo = ({ dispatch }) => {
             return
           }
 
-          var result = { name: name.value, description: description.value, time: time.value, priority: {picker:picker, allPickerArray: pickerArray }}
+          var result = { name: name.value, description: description.value, time: time.value, priority: { picker: picker, allPickerArray: pickerArray } }
           dispatch(addTodo(name.value, result))
           name.defaultValue = 'Домашние питомцы'
           description.defaultValue = 'Выгулять '

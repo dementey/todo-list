@@ -28,7 +28,7 @@ const Todo = ({ onClick, completed, result, id }) => (
           <Typography className="" color="textSecondary">
 
             {result.priority.allPickerArray.map(option => (
-              result.priority.picker == option.value ? option.label : false))}
+              result.priority.picker === option.value ? option.label : true))}
 
 
           </Typography>

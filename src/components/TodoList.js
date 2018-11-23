@@ -1,11 +1,18 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types'
 import Todo from './Todo'
-import GridList from '@material-ui/core/GridList';
+import Grid from '@material-ui/core/Grid';
 
-const TodoList = ({ todos, toggleTodo }) => (
-  <Fragment>
-    <GridList cols={todos.length}>
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+});
+
+const TodoList = ({ todos, toggleTodo, classes }) => (
+  <div className={classes.root} style={{ padding: 30 }}>
+    <Grid container spacing={8}>
       {todos.map(todo =>
         <Todo
           key={todo.id}
@@ -13,8 +20,8 @@ const TodoList = ({ todos, toggleTodo }) => (
           onClick={() => toggleTodo(todo.id)}
         />
       )}
-    </GridList>
-  </Fragment>
+    </Grid>
+  </div>
 )
 
 TodoList.propTypes = {
@@ -27,4 +34,4 @@ TodoList.propTypes = {
   toggleTodo: PropTypes.func.isRequired
 }
 
-export default TodoList
+export default withStyles(styles)(TodoList);

@@ -10,14 +10,14 @@ import IconButton from '@material-ui/core/IconButton';
 const styles = {
   root: {
     flexGrow: 1,
-  },
+      },
 };
 
-function SimpleAppBar(props) {
+const SimpleAppBar = (props) => {
   const { classes } = props;
 
-  return (
-    <div className={classes.root}>
+  return(
+    <div className = { classes.root } >
       <AppBar position="static" >
         <Toolbar>
           <IconButton color="inherit" aria-label="Menu">
@@ -28,7 +28,7 @@ function SimpleAppBar(props) {
           </Typography>
         </Toolbar>
       </AppBar>
-    </div>
+    </div >
   );
 }
 

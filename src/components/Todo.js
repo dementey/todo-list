@@ -5,11 +5,11 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import GridListTile from '@material-ui/core/GridListTile';
-
+import Grid from '@material-ui/core/Grid';
 
 const Todo = ({ onClick, completed, result, id }) => (
-  <Fragment>
-    <Paper className="" >
+  <Grid item xs={12} sm={3}>
+    <Paper>
       <GridListTile
         onClick={onClick}
         style={{
@@ -21,7 +21,7 @@ const Todo = ({ onClick, completed, result, id }) => (
             <Typography color="textSecondary" gutterBottom>
               №{id + 1} {result.name}
             </Typography>
-            <Typography  gutterBottom>
+            <Typography gutterBottom>
               {result.description}
             </Typography>
             <Typography color="secondary" gutterBottom>
@@ -35,7 +35,7 @@ const Todo = ({ onClick, completed, result, id }) => (
         </Card>
       </GridListTile>
     </Paper>
-  </Fragment>
+  </Grid>
 )
 
 Todo.propTypes = {

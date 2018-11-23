@@ -1,29 +1,40 @@
 import React from 'react'
+import { withStyles } from '@material-ui/core/styles';
 import FilterLink from '../containers/FilterLink'
 import { VisibilityFilters } from '../actions'
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+});
 
+const Footer = (classes) => (
+  <div className={classes.root} style={{ padding: 20 }}>
+  <Grid container spacing={24}>
+    <Grid item xs={12} sm={3}>
+      <FilterLink filter={VisibilityFilters.SHOW_ALL}>
+        All
+    </FilterLink>
+      <FilterLink filter={VisibilityFilters.SHOW_ACTIVE} color="secondary">
+        Active
+    </FilterLink>
+      <FilterLink filter={VisibilityFilters.SHOW_COMPLETED} color="primary">
+        Completed
+    </FilterLink>
+    </Grid>
 
-const Footer = () => (
-  <Toolbar>
-    <Typography>Show: </Typography>
-    <FilterLink filter={VisibilityFilters.SHOW_ALL}>
-      All
+    <Grid item xs={12} sm={3}>
+      <FilterLink filter={VisibilityFilters.SHOW_TIME} color="primary">
+        TIME 7:30
     </FilterLink>
-    <FilterLink filter={VisibilityFilters.SHOW_ACTIVE} color="secondary">
-      Active
+      <FilterLink filter={VisibilityFilters.SHOW_PRIORITY} color="primary">
+        Priotity 1-DoNow
     </FilterLink>
-    <FilterLink filter={VisibilityFilters.SHOW_COMPLETED} color="primary">
-      Completed
-    </FilterLink>
-    <FilterLink filter={VisibilityFilters.SHOW_TIME} color="primary">
-      TIME 7:30
-    </FilterLink>
-    <FilterLink filter={VisibilityFilters.SHOW_PRIORITY} color="primary">
-      Priotity 1-DoNow
-    </FilterLink>
-  </Toolbar>
+    </Grid>
+
+  </Grid >
+  </div>
 )
 
-export default Footer
+export default withStyles(styles)(Footer);

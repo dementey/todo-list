@@ -11,6 +11,7 @@ import AccessTime from '@material-ui/icons/AccessTime';
 import AssignmentLate from '@material-ui/icons/AssignmentLate';
 import SimpleSelect from './Picker';
 import Paper from '@material-ui/core/Paper';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 const styles = theme => ({
   root: {
@@ -24,9 +25,16 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 200,
-  },
+    width: 'auto',
 
+  },
+  fabButton: {
+    position: 'absolute',
+    zIndex: 1,
+    left: 0,
+    right: 0,
+    margin: '0 auto',
+  },
 });
 
 
@@ -70,7 +78,7 @@ const AddTodoComponent = ({ onSubmitt, classes }) => {
 
   return (
 
-    <div className={classes.root}>
+    <div className={classes.root} style={{ padding: 20 }}>
       <form onSubmit={e => {
         e.preventDefault()
         if (!name.value.trim() || !description.value.trim() || !time.value || !picker) {
@@ -83,29 +91,65 @@ const AddTodoComponent = ({ onSubmitt, classes }) => {
         description.defaultValue = 'Выгулять '
         time.defaultValue = '07:30'
       }}>
-        <Grid container spacing={24}>
+        <Grid container spacing={8}>
           <Grid item xs={12} sm={3}>
             <Paper className={classes.paper}>
-              <Assignment />
-              <TextField  className={classes.textField} id="input-with-icon-grid" label="Название" defaultValue='Домашние питомцы' inputRef={node => name = node} /></Paper>
+              <TextField className={classes.textField}
+                id="input-with-icon-grid" label="Название"
+                defaultValue='Домашние питомцы'
+                inputRef={node => name = node}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Assignment />
+                    </InputAdornment>
+                  ),
+                }} />
+            </Paper>
           </Grid>
           <Grid item xs={12} sm={3}>
             <Paper className={classes.paper}>
-              <Description />
-              <TextField id="input-with-icon-grid" label="Oписание" defaultValue='Выгулять собаку' inputRef={node => description = node} /></Paper>
+
+              <TextField className={classes.textField}
+                id="input-with-icon-grid"
+                label="Oписание"
+                defaultValue='Выгулять собаку'
+                inputRef={node => description = node}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Description />
+                    </InputAdornment>
+                  ),
+                }} />
+            </Paper>
           </Grid>
           <Grid item xs={12} sm={3}>
             <Paper className={classes.paper}>
-              <AccessTime />
-              <TextField id="input-with-icon-grid" label="Время" type="time" defaultValue="07:30" inputRef={node => time = node} /></Paper>
+              <TextField className={classes.textField}
+                id="input-with-icon-grid"
+                label="Время"
+                type="time"
+                defaultValue="07:30"
+                inputRef={node => time = node}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AccessTime />
+                    </InputAdornment>
+                  ),
+                }} /></Paper>
           </Grid>
           <Grid item xs={12} sm={3}>
             <Paper className={classes.paper}>
               <AssignmentLate />
-              <SimpleSelect val={picker} cb={priorityFunction} ></SimpleSelect></Paper>
+              <SimpleSelect className={classes.textField}
+                val={picker}
+                cb={priorityFunction}
+              ></SimpleSelect></Paper>
           </Grid>
           <Grid item xs={12} sm={12} >
-            <Button type='submit' variant="fab" mini color="primary" aria-label="Add" >
+            <Button type='submit' variant="fab" mini color="primary" aria-label="Add" className={classes.fabButton} >
               <AddIcon />
             </Button>
           </Grid>

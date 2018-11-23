@@ -1,15 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button';
- 
-const Link = ({ active, children, onClick}) => (
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    display: 'none',
+  },
+});
+
+const Link = ({ active, children, onClick, classes}) => (
     <Button
        onClick={onClick}
        disabled={active}
-       style={{
-           marginLeft: '4px',
-       }}
-       
+       className={classes.button}
        variant="contained"
     >
       {children}
@@ -24,4 +31,4 @@ Link.propTypes = {
  
 }
 
-export default Link
+export default withStyles(styles)( Link);

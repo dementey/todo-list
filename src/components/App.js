@@ -1,17 +1,16 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Footer from './Footer'
 import AddTodo from '../containers/AddTodoLink'
 import VisibleTodoList from '../containers/VisibleTodoList'
 import SimpleAppBar from './AppBar';
 
 const App = () => (
-  <div>
+  <Fragment>
     <SimpleAppBar />
     <AddTodo />
     <VisibleTodoList />
     <Footer />
-
-  </div>
+  </Fragment>
 )
 
 export default App

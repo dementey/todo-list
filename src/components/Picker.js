@@ -37,13 +37,13 @@ class SimpleSelect extends React.Component {
   state = {
     priority: this.props.val,
     name: '',
-  
+
   };
- 
+
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-    this.props.cb(event.target.value, pickerArray );
+    this.props.cb(event.target.value, pickerArray);
   };
 
   render() {
@@ -74,7 +74,7 @@ class SimpleSelect extends React.Component {
             </MenuItem>
           ))}
         </Select>
-      </FormControl>
+      </FormControl >
 
 
     );
